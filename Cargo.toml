@@ -1,0 +1,15 @@
+[package]
+name = "slippery"
+version = "0.1.0"
+authors = ["florianvazelle <ponythugflorian@gmail.com>"]
+edition = "2021"
+rust-version = "1.56"
+
+[dependencies]
+gdnative = "0.10"
+
+[lib]
+crate-type = ["cdylib"]
+
+[workspace]
+exclude = ["assets", "bin", "lib", "native", "scenes"]
