@@ -70,16 +70,8 @@ script = '''
 # cargo make export-wasm32-unknown-emscripten-release
 '''
 
-[tasks.gdignore]
-condition = { platforms = ["linux"] }
-script_runner = "@shell"
-script = '''
-mkdir -p ./target ./lib ./bin
-touch ./target/.gdignore ./lib/.gdignore ./bin/.gdignore
-'''
-
 [tasks.ps1-build-aarch64-linux-android-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-linux-android 
@@ -88,7 +80,7 @@ mv ./target/aarch64-linux-android/debug/*.so ./lib/aarch64-linux-android
 '''
 
 [tasks.sh-build-aarch64-linux-android-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-linux-android 
@@ -114,7 +106,7 @@ godot --export-debug "Android.aarch64-linux-android.debug" ./bin/aarch64-linux-a
 '''
 
 [tasks.ps1-build-aarch64-linux-android-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-linux-android --release
@@ -123,7 +115,7 @@ mv ./target/aarch64-linux-android/release/*.so ./lib/aarch64-linux-android
 '''
 
 [tasks.sh-build-aarch64-linux-android-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-linux-android --release
@@ -149,7 +141,7 @@ godot --export "Android.aarch64-linux-android.release" ./bin/aarch64-linux-andro
 '''
 
 [tasks.ps1-build-armv7-linux-androideabi-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target armv7-linux-androideabi 
@@ -158,7 +150,7 @@ mv ./target/armv7-linux-androideabi/debug/*.so ./lib/armv7-linux-androideabi
 '''
 
 [tasks.sh-build-armv7-linux-androideabi-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target armv7-linux-androideabi 
@@ -184,7 +176,7 @@ godot --export-debug "Android.armv7-linux-androideabi.debug" ./bin/armv7-linux-a
 '''
 
 [tasks.ps1-build-armv7-linux-androideabi-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target armv7-linux-androideabi --release
@@ -193,7 +185,7 @@ mv ./target/armv7-linux-androideabi/release/*.so ./lib/armv7-linux-androideabi
 '''
 
 [tasks.sh-build-armv7-linux-androideabi-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target armv7-linux-androideabi --release
@@ -219,7 +211,7 @@ godot --export "Android.armv7-linux-androideabi.release" ./bin/armv7-linux-andro
 '''
 
 [tasks.ps1-build-i686-linux-android-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-linux-android 
@@ -228,7 +220,7 @@ mv ./target/i686-linux-android/debug/*.so ./lib/i686-linux-android
 '''
 
 [tasks.sh-build-i686-linux-android-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-linux-android 
@@ -254,7 +246,7 @@ godot --export-debug "Android.i686-linux-android.debug" ./bin/i686-linux-android
 '''
 
 [tasks.ps1-build-i686-linux-android-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-linux-android --release
@@ -263,7 +255,7 @@ mv ./target/i686-linux-android/release/*.so ./lib/i686-linux-android
 '''
 
 [tasks.sh-build-i686-linux-android-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-linux-android --release
@@ -289,7 +281,7 @@ godot --export "Android.i686-linux-android.release" ./bin/i686-linux-android/sli
 '''
 
 [tasks.ps1-build-x86_64-linux-android-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-linux-android 
@@ -298,7 +290,7 @@ mv ./target/x86_64-linux-android/debug/*.so ./lib/x86_64-linux-android
 '''
 
 [tasks.sh-build-x86_64-linux-android-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-linux-android 
@@ -324,7 +316,7 @@ godot --export-debug "Android.x86_64-linux-android.debug" ./bin/x86_64-linux-and
 '''
 
 [tasks.ps1-build-x86_64-linux-android-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-linux-android --release
@@ -333,7 +325,7 @@ mv ./target/x86_64-linux-android/release/*.so ./lib/x86_64-linux-android
 '''
 
 [tasks.sh-build-x86_64-linux-android-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-linux-android --release
@@ -359,7 +351,7 @@ godot --export "Android.x86_64-linux-android.release" ./bin/x86_64-linux-android
 '''
 
 [tasks.ps1-build-i686-unknown-linux-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-unknown-linux-gnu 
@@ -368,7 +360,7 @@ mv ./target/i686-unknown-linux-gnu/debug/*.so ./lib/i686-unknown-linux-gnu
 '''
 
 [tasks.sh-build-i686-unknown-linux-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-unknown-linux-gnu 
@@ -394,7 +386,7 @@ godot --export-debug "Linux/X11.i686-unknown-linux-gnu.debug" ./bin/i686-unknown
 '''
 
 [tasks.ps1-build-i686-unknown-linux-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-unknown-linux-gnu --release
@@ -403,7 +395,7 @@ mv ./target/i686-unknown-linux-gnu/release/*.so ./lib/i686-unknown-linux-gnu
 '''
 
 [tasks.sh-build-i686-unknown-linux-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-unknown-linux-gnu --release
@@ -429,7 +421,7 @@ godot --export "Linux/X11.i686-unknown-linux-gnu.release" ./bin/i686-unknown-lin
 '''
 
 [tasks.ps1-build-x86_64-unknown-linux-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-unknown-linux-gnu 
@@ -438,7 +430,7 @@ mv ./target/x86_64-unknown-linux-gnu/debug/*.so ./lib/x86_64-unknown-linux-gnu
 '''
 
 [tasks.sh-build-x86_64-unknown-linux-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-unknown-linux-gnu 
@@ -464,7 +456,7 @@ godot --export-debug "Linux/X11.x86_64-unknown-linux-gnu.debug" ./bin/x86_64-unk
 '''
 
 [tasks.ps1-build-x86_64-unknown-linux-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-unknown-linux-gnu --release
@@ -473,7 +465,7 @@ mv ./target/x86_64-unknown-linux-gnu/release/*.so ./lib/x86_64-unknown-linux-gnu
 '''
 
 [tasks.sh-build-x86_64-unknown-linux-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-unknown-linux-gnu --release
@@ -499,7 +491,7 @@ godot --export "Linux/X11.x86_64-unknown-linux-gnu.release" ./bin/x86_64-unknown
 '''
 
 [tasks.ps1-build-x86_64-apple-darwin-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-apple-darwin 
@@ -508,7 +500,7 @@ mv ./target/x86_64-apple-darwin/debug/*.dylib ./lib/x86_64-apple-darwin
 '''
 
 [tasks.sh-build-x86_64-apple-darwin-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-apple-darwin 
@@ -534,7 +526,7 @@ godot --export-debug "Mac OSX.x86_64-apple-darwin.debug" ./bin/x86_64-apple-darw
 '''
 
 [tasks.ps1-build-x86_64-apple-darwin-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-apple-darwin --release
@@ -543,7 +535,7 @@ mv ./target/x86_64-apple-darwin/release/*.dylib ./lib/x86_64-apple-darwin
 '''
 
 [tasks.sh-build-x86_64-apple-darwin-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-apple-darwin --release
@@ -569,7 +561,7 @@ godot --export "Mac OSX.x86_64-apple-darwin.release" ./bin/x86_64-apple-darwin/s
 '''
 
 [tasks.ps1-build-aarch64-apple-ios-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-apple-ios 
@@ -578,7 +570,7 @@ mv ./target/aarch64-apple-ios/debug/*.a ./lib/aarch64-apple-ios
 '''
 
 [tasks.sh-build-aarch64-apple-ios-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-apple-ios 
@@ -604,7 +596,7 @@ godot --export-debug "iOS.aarch64-apple-ios.debug" ./bin/aarch64-apple-ios/slipp
 '''
 
 [tasks.ps1-build-aarch64-apple-ios-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-apple-ios --release
@@ -613,7 +605,7 @@ mv ./target/aarch64-apple-ios/release/*.a ./lib/aarch64-apple-ios
 '''
 
 [tasks.sh-build-aarch64-apple-ios-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target aarch64-apple-ios --release
@@ -639,7 +631,7 @@ godot --export "iOS.aarch64-apple-ios.release" ./bin/aarch64-apple-ios/slippery.
 '''
 
 [tasks.ps1-build-i686-pc-windows-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-gnu 
@@ -648,7 +640,7 @@ mv ./target/i686-pc-windows-gnu/debug/*.dll ./lib/i686-pc-windows-gnu
 '''
 
 [tasks.sh-build-i686-pc-windows-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-gnu 
@@ -674,7 +666,7 @@ godot --export-debug "Windows Desktop.i686-pc-windows-gnu.debug" ./bin/i686-pc-w
 '''
 
 [tasks.ps1-build-i686-pc-windows-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-gnu --release
@@ -683,7 +675,7 @@ mv ./target/i686-pc-windows-gnu/release/*.dll ./lib/i686-pc-windows-gnu
 '''
 
 [tasks.sh-build-i686-pc-windows-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-gnu --release
@@ -709,7 +701,7 @@ godot --export "Windows Desktop.i686-pc-windows-gnu.release" ./bin/i686-pc-windo
 '''
 
 [tasks.ps1-build-x86_64-pc-windows-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-gnu 
@@ -718,7 +710,7 @@ mv ./target/x86_64-pc-windows-gnu/debug/*.dll ./lib/x86_64-pc-windows-gnu
 '''
 
 [tasks.sh-build-x86_64-pc-windows-gnu-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-gnu 
@@ -744,7 +736,7 @@ godot --export-debug "Windows Desktop.x86_64-pc-windows-gnu.debug" ./bin/x86_64-
 '''
 
 [tasks.ps1-build-x86_64-pc-windows-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-gnu --release
@@ -753,7 +745,7 @@ mv ./target/x86_64-pc-windows-gnu/release/*.dll ./lib/x86_64-pc-windows-gnu
 '''
 
 [tasks.sh-build-x86_64-pc-windows-gnu-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-gnu --release
@@ -779,7 +771,7 @@ godot --export "Windows Desktop.x86_64-pc-windows-gnu.release" ./bin/x86_64-pc-w
 '''
 
 [tasks.ps1-build-i686-pc-windows-msvc-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-msvc 
@@ -788,7 +780,7 @@ mv ./target/i686-pc-windows-msvc/debug/*.dll ./lib/i686-pc-windows-msvc
 '''
 
 [tasks.sh-build-i686-pc-windows-msvc-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-msvc 
@@ -814,7 +806,7 @@ godot --export-debug "Windows Desktop.i686-pc-windows-msvc.debug" ./bin/i686-pc-
 '''
 
 [tasks.ps1-build-i686-pc-windows-msvc-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-msvc --release
@@ -823,7 +815,7 @@ mv ./target/i686-pc-windows-msvc/release/*.dll ./lib/i686-pc-windows-msvc
 '''
 
 [tasks.sh-build-i686-pc-windows-msvc-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target i686-pc-windows-msvc --release
@@ -849,7 +841,7 @@ godot --export "Windows Desktop.i686-pc-windows-msvc.release" ./bin/i686-pc-wind
 '''
 
 [tasks.ps1-build-x86_64-pc-windows-msvc-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-msvc 
@@ -858,7 +850,7 @@ mv ./target/x86_64-pc-windows-msvc/debug/*.dll ./lib/x86_64-pc-windows-msvc
 '''
 
 [tasks.sh-build-x86_64-pc-windows-msvc-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-msvc 
@@ -884,7 +876,7 @@ godot --export-debug "Windows Desktop.x86_64-pc-windows-msvc.debug" ./bin/x86_64
 '''
 
 [tasks.ps1-build-x86_64-pc-windows-msvc-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-msvc --release
@@ -893,7 +885,7 @@ mv ./target/x86_64-pc-windows-msvc/release/*.dll ./lib/x86_64-pc-windows-msvc
 '''
 
 [tasks.sh-build-x86_64-pc-windows-msvc-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target x86_64-pc-windows-msvc --release
@@ -919,7 +911,7 @@ godot --export "Windows Desktop.x86_64-pc-windows-msvc.release" ./bin/x86_64-pc-
 '''
 
 [tasks.ps1-build-wasm32-unknown-emscripten-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target wasm32-unknown-emscripten 
@@ -928,7 +920,7 @@ mv ./target/wasm32-unknown-emscripten/debug/*.wasm ./lib/wasm32-unknown-emscript
 '''
 
 [tasks.sh-build-wasm32-unknown-emscripten-debug]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target wasm32-unknown-emscripten 
@@ -954,7 +946,7 @@ godot --export-debug "HTML5.wasm32-unknown-emscripten.debug" ./bin/wasm32-unknow
 '''
 
 [tasks.ps1-build-wasm32-unknown-emscripten-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target wasm32-unknown-emscripten --release
@@ -963,7 +955,7 @@ mv ./target/wasm32-unknown-emscripten/release/*.wasm ./lib/wasm32-unknown-emscri
 '''
 
 [tasks.sh-build-wasm32-unknown-emscripten-release]
-dependencies = ["clean", "gdignore"]
+dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
 cargo build --target wasm32-unknown-emscripten --release

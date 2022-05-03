@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/Outline.tres" type="Material" id=1]
+[ext_resource path="res://shaders/toon.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=2]
+next_pass = ExtResource( 1 )
+shader = ExtResource( 2 )
+shader_param/albedo = Color( 0.0980392, 0.180392, 0.862745, 1 )
+shader_param/specular = 0.0
+shader_param/specular_amount = 0.586
+shader_param/specular_smoothness = 0.192
+shader_param/rim = 0.138
+shader_param/rim_amount = 0.285
+shader_param/rim_smoothness = 0.323
+shader_param/metallic = 0.608
+shader_param/roughness = 1.0
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 250, 1, 250 )
+
+[node name="Slider" type="Spatial"]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 82.4815, 39.7358, 0, -31.0659, 50.1964, 0, 0, 0, 19.4962, 25.9614, -85.8721, 0 )
+material = SubResource( 2 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 45.2384, 0, 0, 0, 33.417, 0, 0, 0, 19.4962, 118.793, -92.368, 0 )
+material = SubResource( 2 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 145.212, 0, 0, 0, -2.40053e-06, -100.164, 0, 19.4853, -1.55347e-06, 117.806, 35.7937, 0 )
+operation = 2
+sides = 64
+material = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )

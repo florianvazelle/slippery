@@ -3,13 +3,15 @@ name = "slippery"
 version = "0.1.0"
 authors = ["florianvazelle <ponythugflorian@gmail.com>"]
 edition = "2021"
-rust-version = "1.56"
 
 [dependencies]
 gdnative = "0.10"
+slippery-core = { path = "crates/slippery_core", version = "0.1.0" }
+slippery-debug = { path = "crates/slippery_debug", version = "0.1.0" }
 
 [lib]
 crate-type = ["cdylib"]
 
 [workspace]
-exclude = ["assets", "bin", "lib", "native", "scenes"]
+members = ["crates/*"]
+exclude = [".github", "addons", "assets", "bin", "lib", "native", "resources", "scenes", "shaders"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://native/dbg/Fps.gdns" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ash.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://native/TitleScreen.gdns" type="Script" id=4]
 
@@ -40,6 +41,11 @@ margin_right = 272.0
 margin_bottom = 168.0
 custom_fonts/font = SubResource( 1 )
 text = "Quit Game"
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+script = ExtResource( 1 )
 
 [connection signal="pressed" from="NewGame" to="." method="on_newgame_button_pressed"]
 [connection signal="pressed" from="QuitGame" to="." method="on_quitgame_button_pressed"]

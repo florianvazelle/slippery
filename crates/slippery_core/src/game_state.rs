@@ -12,17 +12,15 @@ impl GameState {
         GameState { score: 0 }
     }
 
-    #[export]
     pub fn reset(&mut self, _owner: &Node) {
         self.score = 0;
     }
 
-    #[export]
-    fn score(&self, _owner: &Node) -> u16 {
+    fn _score(&self, _owner: &Node) -> u16 {
         self.score
     }
 
-    pub fn _increment_score(&mut self) {
+    fn _increment_score(&mut self) {
         self.score += 1;
     }
 }
