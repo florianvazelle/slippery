@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://native/dbg/Fps.gdns" type="Script" id=1]
+[ext_resource path="res://native/TitleCamera.gdns" type="Script" id=2]
 [ext_resource path="res://assets/fonts/ash.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://native/TitleScreen.gdns" type="Script" id=4]
+[ext_resource path="res://resources/Outline.tres" type="Material" id=5]
+[ext_resource path="res://shaders/toon.shader" type="Shader" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -10,15 +13,34 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[node name="Control" type="Control"]
+[sub_resource type="ShaderMaterial" id=2]
+next_pass = ExtResource( 5 )
+shader = ExtResource( 6 )
+shader_param/albedo = Color( 0.0980392, 0.180392, 0.862745, 1 )
+shader_param/specular = 0.0
+shader_param/specular_amount = 0.586
+shader_param/specular_smoothness = 0.192
+shader_param/rim = 0.138
+shader_param/rim_amount = 0.285
+shader_param/rim_smoothness = 0.323
+shader_param/metallic = 0.608
+shader_param/roughness = 1.0
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+
+[node name="TitleScreen" type="Spatial"]
+
+[node name="Menu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu"]
 autoplay = true
 
-[node name="NewGame" type="ToolButton" parent="."]
+[node name="NewGame" type="ToolButton" parent="Menu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -30,7 +52,7 @@ margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
 text = "New Game"
 
-[node name="QuitGame" type="ToolButton" parent="."]
+[node name="QuitGame" type="ToolButton" parent="Menu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -42,10 +64,18 @@ margin_bottom = 168.0
 custom_fonts/font = SubResource( 1 )
 text = "Quit Game"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Menu"]
 margin_right = 40.0
 margin_bottom = 14.0
 script = ExtResource( 1 )
 
-[connection signal="pressed" from="NewGame" to="." method="on_newgame_button_pressed"]
-[connection signal="pressed" from="QuitGame" to="." method="on_quitgame_button_pressed"]
+[node name="TitleCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.828706, 0.559685, 0, -0.559685, 0.828706, 0, 1.51313, 0 )
+script = ExtResource( 2 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0 )
+material = SubResource( 2 )
+
+[connection signal="pressed" from="Menu/NewGame" to="Menu" method="on_newgame_button_pressed"]
+[connection signal="pressed" from="Menu/QuitGame" to="Menu" method="on_quitgame_button_pressed"]

@@ -39,6 +39,8 @@ __meta__ = {
 
 [node name="Ball" parent="Spatial" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40782, 0 )
+cam_ball = null
+rotate_speed = null
 
 [node name="CSGBox" type="CSGBox" parent="Spatial"]
 transform = Transform( 10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0 )

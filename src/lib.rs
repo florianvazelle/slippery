@@ -11,6 +11,7 @@ fn init(handle: InitHandle) {
     handle.add_class::<game::Game>();
     handle.add_class::<game_state::GameState>();
     handle.add_class::<hud::Hud>();
+    handle.add_class::<title_cam::TitleCamera>();
     handle.add_class::<title_screen::TitleScreen>();
 }
 
