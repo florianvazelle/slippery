@@ -2,7 +2,7 @@
 
 [ext_resource path="res://native/Ball.gdns" type="Script" id=1]
 [ext_resource path="res://native/CameraBall.gdns" type="Script" id=2]
-[ext_resource path="res://shaders/toon.shader" type="Shader" id=3]
+[ext_resource path="res://shaders/toon_two_color.shader" type="Shader" id=3]
 [ext_resource path="res://resources/Outline.tres" type="Material" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -13,15 +13,16 @@ bounce = 0.1
 [sub_resource type="ShaderMaterial" id=4]
 next_pass = ExtResource( 4 )
 shader = ExtResource( 3 )
-shader_param/albedo = Color( 0.847059, 0.129412, 0.129412, 1 )
-shader_param/specular = 0.974
+shader_param/albedo1 = Color( 1, 0, 0, 1 )
+shader_param/albedo2 = Color( 0.0862745, 0.12549, 0.74902, 1 )
+shader_param/specular = 0.137
 shader_param/specular_amount = 0.671
 shader_param/specular_smoothness = 1.0
-shader_param/rim = 0.0
-shader_param/rim_amount = 0.2
-shader_param/rim_smoothness = 0.48
-shader_param/metallic = 0.772
-shader_param/roughness = 1.0
+shader_param/rim = 0.381
+shader_param/rim_amount = 0.0
+shader_param/rim_smoothness = 0.705
+shader_param/metallic = 0.128
+shader_param/roughness = 0.181
 shader_param/emission = Color( 0, 0, 0, 1 )
 shader_param/emission_energy = 1.0
 shader_param/uv_scale = Vector2( 1, 1 )

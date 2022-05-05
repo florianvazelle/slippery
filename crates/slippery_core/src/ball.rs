@@ -7,8 +7,6 @@ use std::ops::Mul;
 #[derive(NativeClass)]
 #[inherit(RigidBody)]
 pub struct Ball {
-    #[property]
-    cam_ball: Option<Ref<Camera>>,
     #[property(default = 5.0)]
     rotate_speed: f32,
 }
@@ -16,26 +14,11 @@ pub struct Ball {
 #[methods]
 impl Ball {
     fn new(_owner: &RigidBody) -> Self {
-        Ball {
-            cam_ball: None,
-            rotate_speed: 5.0,
-        }
+        Ball { rotate_speed: 5.0 }
     }
 
     #[export]
     fn _ready(&mut self, owner: &RigidBody) {
-        // Find child camera.
-        for child in owner.get_children().iter() {
-            match child.try_to_object::<Camera>() {
-                Ok(camera) => {
-                    self.cam_ball = Some(camera);
-                    godot_print!("Camera found");
-                    break;
-                }
-                Err(_) => continue,
-            }
-        }
-
         // Activate physics process method.
         owner.set_physics_process(true);
     }
@@ -45,14 +28,7 @@ impl Ball {
         let up = Vector3::new(0.0, 1.0, 0.0);
         let mut dir = Vector3::new(0.0, 0.0, 0.0);
 
-        let camera = self.cam_ball.as_ref().expect("No camera");
-        let cam_xform = unsafe {
-            camera
-                .assume_safe()
-                .call("get_global_transform", &[])
-                .try_to::<Transform>()
-                .expect("Unable to retrieve camera transform")
-        };
+        let cam_xform = unsafe { owner.get_node_as::<Camera>("CamBall").unwrap().global_transform() };
 
         // TODO : use `fn _input(&self, owner: &Node, event: Ref<InputEvent>);` instead.
         let input = Input::godot_singleton();

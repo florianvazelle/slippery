@@ -1,0 +1,10 @@
+[package]
+name = "slippery-camera"
+version = "0.1.0"
+authors = ["florianvazelle <ponythugflorian@gmail.com>"]
+edition = "2021"
+description = "Composable camera rigs, adapted from dolly to Godot Engine"
+
+[dependencies]
+gdnative = "0.10"
+slippery-macro = { path = "../slippery_macro", version = "0.1.0" }

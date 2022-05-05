@@ -18,8 +18,8 @@ shader_param/specular_smoothness = 0.192
 shader_param/rim = 0.138
 shader_param/rim_amount = 0.285
 shader_param/rim_smoothness = 0.323
-shader_param/metallic = 0.608
-shader_param/roughness = 1.0
+shader_param/metallic = 0.26
+shader_param/roughness = 0.085
 shader_param/emission = Color( 0, 0, 0, 1 )
 shader_param/emission_energy = 1.0
 shader_param/uv_scale = Vector2( 1, 1 )
@@ -39,18 +39,17 @@ __meta__ = {
 
 [node name="Ball" parent="Spatial" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40782, 0 )
-cam_ball = null
-rotate_speed = null
 
 [node name="CSGBox" type="CSGBox" parent="Spatial"]
 transform = Transform( 10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0 )
-visible = false
+use_collision = true
 material = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0.951734, 0.306925, 0, -0.306925, 0.951734, 0, 9.41728, 11.5369 )
 
 [node name="Slider" parent="Spatial" instance=ExtResource( 7 )]
+visible = false
 
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0

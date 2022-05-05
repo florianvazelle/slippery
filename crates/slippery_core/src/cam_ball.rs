@@ -2,7 +2,10 @@ use gdnative::api::{Camera, PhysicsServer, RigidBody};
 use gdnative::core_types::Transform;
 use gdnative::prelude::*;
 
-use crate::utils::*;
+use slippery_macro::deg2rad;
+use slippery_camera::prelude::*;
+
+use crate::utils::is;
 
 #[derive(NativeClass)]
 #[inherit(Camera)]
@@ -20,6 +23,8 @@ pub struct CameraBall {
     autoturn_speed: f32,
     max_height: f32,
     min_height: f32,
+
+    rig: CameraRig,
 }
 
 #[methods]
@@ -34,6 +39,19 @@ impl CameraBall {
             autoturn_speed: 50.0,
             max_height: 2.0,
             min_height: 1.0,
+            rig: CameraRig::builder()
+                .with(Position::new(Vector3::ZERO))
+                // .with(Rotation::new(Basis::IDENTITY))
+                .with(Smooth::new_position(1.25).predictive(true))
+                .with(Arm::new(Vector3::new(0.0, 1.5, -3.5)))
+                .with(Smooth::new_position(2.5))
+                .with(YawPitch::new())
+                .with(
+                    LookAt::new(Vector3::ZERO + Vector3::UP)
+                        .tracking_smoothness(1.25)
+                        .tracking_predictive(true),
+                )
+                .build(),
         }
     }
 
@@ -82,7 +100,7 @@ impl CameraBall {
 
             let target = ball_transform.origin;
             let pos = owner.global_transform().origin;
-            let up = Vector3::new(0.0, 1.0, 0.0);
+            let up = Vector3::UP;
 
             let mut delta = pos - target;
 
@@ -115,7 +133,7 @@ impl CameraBall {
                     let col_left = ds.intersect_ray(
                         target,
                         target
-                            + Basis::from_axis_angle(up, deg2rad(self.autoturn_ray_aperture))
+                            + Basis::from_axis_angle(up, deg2rad!(self.autoturn_ray_aperture))
                                 .xform(delta),
                         self.collision_exception.new_ref(),
                         2147483647,
@@ -133,7 +151,7 @@ impl CameraBall {
                     let col_right = ds.intersect_ray(
                         target,
                         target
-                            + Basis::from_axis_angle(up, deg2rad(-self.autoturn_ray_aperture))
+                            + Basis::from_axis_angle(up, deg2rad!(-self.autoturn_ray_aperture))
                                 .xform(delta),
                         self.collision_exception.new_ref(),
                         2147483647,
@@ -147,27 +165,24 @@ impl CameraBall {
                             delta = position - target
                         }
                     } else if !col_left.is_empty() && col_right.is_empty() {
-                        delta = Basis::from_axis_angle(up, deg2rad(-dt * self.autoturn_speed))
+                        delta = Basis::from_axis_angle(up, deg2rad!(-dt * self.autoturn_speed))
                             .xform(delta);
                     } else if col_left.is_empty() && !col_right.is_empty() {
-                        delta = Basis::from_axis_angle(up, deg2rad(dt * self.autoturn_speed))
+                        delta = Basis::from_axis_angle(up, deg2rad!(dt * self.autoturn_speed))
                             .xform(delta);
                     }
 
-                    if delta == Vector3::new(0.0, 0.0, 0.0) {
+                    if delta == Vector3::ZERO {
                         delta = (pos - target).normalized() * 0.0001;
                     }
 
-                    let pos = target + delta;
+                    self.rig.driver_mut::<Position>().position = target + delta;
+                    self.rig.driver_mut::<YawPitch>().rotate_yaw_pitch(self.angle_v_adjust, 0.0);
+                    self.rig.driver_mut::<LookAt>().target = target;
 
-                    owner.look_at_from_position(pos, target, up);
-
-                    let mut t = owner.transform();
-                    t.basis = Basis::from_axis_angle(
-                        t.basis.a().normalized(),
-                        deg2rad(self.angle_v_adjust),
-                    ) * t.basis;
-                    owner.set_transform(t);
+                    owner.set_transform(
+                        self.rig.update(dt)
+                    );
                 }
             }
         }

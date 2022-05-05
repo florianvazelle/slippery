@@ -26,7 +26,6 @@ extents = Vector3( 250, 1, 250 )
 [node name="Slider" type="Spatial"]
 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
-use_collision = true
 
 [node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
 transform = Transform( 82.4815, 39.7358, 0, -31.0659, 50.1964, 0, 0, 0, 19.4962, 25.9614, -85.8721, 0 )

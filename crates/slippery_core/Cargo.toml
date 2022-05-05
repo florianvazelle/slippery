@@ -6,3 +6,5 @@ edition = "2021"
 
 [dependencies]
 gdnative = "0.10"
+slippery-camera = { path = "../slippery_camera", version = "0.1.0" }
+slippery-macro = { path = "../slippery_macro", version = "0.1.0" }
