@@ -36,7 +36,11 @@ impl TitleCamera {
     #[export]
     fn _physics_process(&mut self, owner: &Camera, dt: f32) {
         self.current_angle = (self.current_angle + dt * self.rotation_speed) % 180.0;
-        self.rig.driver_mut::<Position>().position = Vector3::new(RADIUS * self.current_angle.cos(), 15.0, RADIUS * self.current_angle.sin());
+        self.rig.driver_mut::<Position>().position = Vector3::new(
+            RADIUS * self.current_angle.cos(),
+            15.0,
+            RADIUS * self.current_angle.sin(),
+        );
         owner.set_transform(self.rig.update(dt));
     }
 }

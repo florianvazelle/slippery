@@ -81,13 +81,11 @@ impl RigDriver for YawPitch {
     fn update(&mut self, params: RigUpdateParams) -> Transform {
         Transform {
             origin: params.parent.origin,
-            basis: Basis::from_euler(
-                Vector3::new(
-                    deg2rad!(self.yaw_degrees),
-                    deg2rad!(self.pitch_degrees),
-                    0.0,
-                ),
-            ),
+            basis: Basis::from_euler(Vector3::new(
+                deg2rad!(self.yaw_degrees),
+                deg2rad!(self.pitch_degrees),
+                0.0,
+            )),
         }
     }
 

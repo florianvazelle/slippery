@@ -63,7 +63,7 @@ impl RigDriver for LookAt {
         );
 
         let forward = (target - params.parent.origin).normalized();
-        
+
         let right = forward.cross(Vector3::UP).normalized();
         let up = right.cross(forward);
         let basis = Basis::from_basis_vectors(right, up, -forward);

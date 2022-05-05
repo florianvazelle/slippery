@@ -65,7 +65,7 @@ void fragment() {
 	ALBEDO = albedo.rgb * texture(texture_albedo, UV).rgb;
 	ROUGHNESS = roughness * texture(texture_surface, UV).r;
 	METALLIC = metallic * texture(texture_surface, UV).g;
-	
+
 	// Emission, straight out of base code with additive mode.
 	EMISSION = (emission.rgb + texture(texture_emission, UV).rgb) * emission_energy;
 }
@@ -83,7 +83,7 @@ void light() {
 	float rim_value = rim * texture(texture_rim, UV).r;
 	float rim_width = rim_amount * texture(texture_rim, UV).g;
 	float rim_smooth = rim_smoothness * texture(texture_rim, UV).b;
-	
+
 	// Diffuse part. We take the dot product between light and normal, multiply it by attenuation
 	// and apply it to the diffuse curve. This means the diffuse curve gets to do the dot product
 	// smoothing, set multiple light bands each with its own tone and smoothing, etc etc. I reccomend
@@ -92,14 +92,14 @@ void light() {
 	// interpolation methods but you have less control over each point's exact position and value.
 	vec3 litness = texture(diffuse_curve, vec2(dot(LIGHT, NORMAL), 0.0)).r * ATTENUATION;
 	DIFFUSE_LIGHT += ALBEDO * LIGHT_COLOR * litness;
-	
+
 	// Specular part. We use the Blinn-Phong specular calculations with a smoothstep
 	// function to toonify. Mess with the specular uniforms to see what each one does.
 	vec3 half = normalize(VIEW + LIGHT);
 	float spec_intensity = pow(dot(NORMAL, half), spec_gloss * spec_gloss);
 	spec_intensity = smoothstep(0.05, 0.05 + spec_smooth, spec_intensity);
 	SPECULAR_LIGHT += LIGHT_COLOR * spec_value * spec_intensity * litness;
-	
+
 	// Rim part. We use the view and normal vectors only to find out if we're looking
 	// at a pixel from the edge of the object or not. We add the final value to specular
 	// light values so that Godot treats it as specular.
@@ -108,5 +108,3 @@ void light() {
 	float rim_intensity = smoothstep(rim_threshold - rim_smooth/2.0, rim_threshold + rim_smooth/2.0, rim_dot);
 	SPECULAR_LIGHT += LIGHT_COLOR * rim_value * rim_intensity * litness;
 }
-
-

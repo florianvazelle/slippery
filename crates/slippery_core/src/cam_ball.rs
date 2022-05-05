@@ -1,9 +1,8 @@
 use gdnative::api::{Camera, PhysicsServer, RigidBody};
-use gdnative::core_types::Transform;
 use gdnative::prelude::*;
 
-use slippery_macro::deg2rad;
 use slippery_camera::prelude::*;
+use slippery_macro::deg2rad;
 
 use crate::utils::is;
 
@@ -64,14 +63,7 @@ impl CameraBall {
         while parent.is_some() {
             let parent_node: TRef<Node> = unsafe { parent.unwrap().assume_safe() };
             if is::<RigidBody, _>(&parent_node) {
-                unsafe {
-                    collision_exception.push(
-                        parent_node
-                            .call("get_rid", &[])
-                            .try_to::<Rid>()
-                            .expect("Unable to retrieve parent node rid"),
-                    );
-                };
+                collision_exception.push(parent_node.cast::<RigidBody>().unwrap().get_rid());
                 break;
             } else {
                 parent = parent_node.get_parent();
@@ -90,13 +82,8 @@ impl CameraBall {
         // godot_print!("{}", owner.get_path().to_string());
 
         // TODO : use get_parent_spatial instead.
-        if let Some(ball) = owner.get_parent() {
-            let ball_transform = unsafe {
-                ball.assume_safe()
-                    .call("get_global_transform", &[])
-                    .try_to::<Transform>()
-                    .expect("Unable to retrieve ball transform")
-            };
+        if let Some(ball) = owner.get_parent_spatial() {
+            let ball_transform = unsafe { ball.assume_safe().global_transform() };
 
             let target = ball_transform.origin;
             let pos = owner.global_transform().origin;
@@ -118,13 +105,7 @@ impl CameraBall {
             }
 
             if let Some(world) = owner.get_world() {
-                let world_space = unsafe {
-                    world
-                        .assume_safe()
-                        .call("get_space", &[])
-                        .try_to::<Rid>()
-                        .expect("Unable to retrieve world space")
-                };
+                let world_space = unsafe { world.assume_safe().space() };
 
                 let physics_server = unsafe { PhysicsServer::godot_singleton() };
                 if let Some(ds) = unsafe { physics_server.space_get_direct_state(world_space) } {
@@ -177,12 +158,12 @@ impl CameraBall {
                     }
 
                     self.rig.driver_mut::<Position>().position = target + delta;
-                    self.rig.driver_mut::<YawPitch>().rotate_yaw_pitch(self.angle_v_adjust, 0.0);
+                    self.rig
+                        .driver_mut::<YawPitch>()
+                        .rotate_yaw_pitch(self.angle_v_adjust, 0.0);
                     self.rig.driver_mut::<LookAt>().target = target;
 
-                    owner.set_transform(
-                        self.rig.update(dt)
-                    );
+                    owner.set_transform(self.rig.update(dt));
                 }
             }
         }

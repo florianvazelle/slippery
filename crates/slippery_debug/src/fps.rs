@@ -1,4 +1,4 @@
-use gdnative::api::{Engine};
+use gdnative::api::Engine;
 use gdnative::prelude::*;
 
 #[derive(NativeClass)]
@@ -14,7 +14,7 @@ impl Fps {
     #[export]
     fn _process(&self, owner: &Label, _delta: f64) {
         let engine = Engine::godot_singleton();
-        
+
         let template = GodotString::from("FPS {0}");
         let data = VariantArray::new();
         data.push(engine.get_frames_per_second());

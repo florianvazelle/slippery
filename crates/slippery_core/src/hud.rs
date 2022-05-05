@@ -4,16 +4,14 @@ use crate::game::set_pause_mode;
 
 #[derive(NativeClass)]
 #[inherit(Node)]
-pub struct Hud{
+pub struct Hud {
     active: bool,
 }
 
 #[methods]
 impl Hud {
     fn new(_owner: &Node) -> Self {
-        Hud {
-            active: false
-        }
+        Hud { active: false }
     }
 
     pub fn toggle(&mut self, owner: &Node) {
@@ -49,7 +47,7 @@ impl Hud {
     }
 
     /// Hide HUD to allow user to continue his party.
-    /// 
+    ///
     /// Godot signals triggered by the "Continue" button.
     #[export]
     fn on_continueparty_button_pressed(&mut self, owner: &Node) {
@@ -57,7 +55,7 @@ impl Hud {
     }
 
     /// Exit the party and load the title screen scene.
-    /// 
+    ///
     /// Godot signals triggered by the "Quit Party" button.
     #[export]
     fn on_quitparty_button_pressed(&self, owner: &Node) {
@@ -66,7 +64,7 @@ impl Hud {
         let tree = unsafe { tree.assume_safe() };
         tree.change_scene("res://scenes/TitleScreen.tscn")
             .expect("TitleScreen could not be loaded");
-        
+
         // Unpause game.
         set_pause_mode(owner, false);
     }

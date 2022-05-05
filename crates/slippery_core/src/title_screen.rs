@@ -13,7 +13,7 @@ impl TitleScreen {
     }
 
     /// Start a new game.
-    /// 
+    ///
     /// Godot signals triggered by the "New Game" button.
     #[export]
     fn on_newgame_button_pressed(&self, owner: &Node) {
@@ -33,7 +33,7 @@ impl TitleScreen {
     }
 
     /// Exit game.
-    /// 
+    ///
     /// Godot signals triggered by the "Quit Game" button.
     #[export]
     fn on_quitgame_button_pressed(&self, owner: &Node) {

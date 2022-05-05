@@ -74,7 +74,7 @@ script = '''
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target aarch64-linux-android 
+cargo build --target aarch64-linux-android
 mkdir -p ./lib/aarch64-linux-android
 mv ./target/aarch64-linux-android/debug/*.so ./lib/aarch64-linux-android
 '''
@@ -83,7 +83,7 @@ mv ./target/aarch64-linux-android/debug/*.so ./lib/aarch64-linux-android
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target aarch64-linux-android 
+cargo build --target aarch64-linux-android
 if [[ -f ./lib/aarch64-linux-android/*.so ]]; then
   rm ./lib/aarch64-linux-android/*.so
 fi
@@ -144,7 +144,7 @@ godot --export "Android.aarch64-linux-android.release" ./bin/aarch64-linux-andro
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target armv7-linux-androideabi 
+cargo build --target armv7-linux-androideabi
 mkdir -p ./lib/armv7-linux-androideabi
 mv ./target/armv7-linux-androideabi/debug/*.so ./lib/armv7-linux-androideabi
 '''
@@ -153,7 +153,7 @@ mv ./target/armv7-linux-androideabi/debug/*.so ./lib/armv7-linux-androideabi
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target armv7-linux-androideabi 
+cargo build --target armv7-linux-androideabi
 if [[ -f ./lib/armv7-linux-androideabi/*.so ]]; then
   rm ./lib/armv7-linux-androideabi/*.so
 fi
@@ -214,7 +214,7 @@ godot --export "Android.armv7-linux-androideabi.release" ./bin/armv7-linux-andro
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-linux-android 
+cargo build --target i686-linux-android
 mkdir -p ./lib/i686-linux-android
 mv ./target/i686-linux-android/debug/*.so ./lib/i686-linux-android
 '''
@@ -223,7 +223,7 @@ mv ./target/i686-linux-android/debug/*.so ./lib/i686-linux-android
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-linux-android 
+cargo build --target i686-linux-android
 if [[ -f ./lib/i686-linux-android/*.so ]]; then
   rm ./lib/i686-linux-android/*.so
 fi
@@ -284,7 +284,7 @@ godot --export "Android.i686-linux-android.release" ./bin/i686-linux-android/sli
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-linux-android 
+cargo build --target x86_64-linux-android
 mkdir -p ./lib/x86_64-linux-android
 mv ./target/x86_64-linux-android/debug/*.so ./lib/x86_64-linux-android
 '''
@@ -293,7 +293,7 @@ mv ./target/x86_64-linux-android/debug/*.so ./lib/x86_64-linux-android
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-linux-android 
+cargo build --target x86_64-linux-android
 if [[ -f ./lib/x86_64-linux-android/*.so ]]; then
   rm ./lib/x86_64-linux-android/*.so
 fi
@@ -354,7 +354,7 @@ godot --export "Android.x86_64-linux-android.release" ./bin/x86_64-linux-android
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-unknown-linux-gnu 
+cargo build --target i686-unknown-linux-gnu
 mkdir -p ./lib/i686-unknown-linux-gnu
 mv ./target/i686-unknown-linux-gnu/debug/*.so ./lib/i686-unknown-linux-gnu
 '''
@@ -363,7 +363,7 @@ mv ./target/i686-unknown-linux-gnu/debug/*.so ./lib/i686-unknown-linux-gnu
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-unknown-linux-gnu 
+cargo build --target i686-unknown-linux-gnu
 if [[ -f ./lib/i686-unknown-linux-gnu/*.so ]]; then
   rm ./lib/i686-unknown-linux-gnu/*.so
 fi
@@ -424,7 +424,7 @@ godot --export "Linux/X11.i686-unknown-linux-gnu.release" ./bin/i686-unknown-lin
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-unknown-linux-gnu 
+cargo build --target x86_64-unknown-linux-gnu
 mkdir -p ./lib/x86_64-unknown-linux-gnu
 mv ./target/x86_64-unknown-linux-gnu/debug/*.so ./lib/x86_64-unknown-linux-gnu
 '''
@@ -433,7 +433,7 @@ mv ./target/x86_64-unknown-linux-gnu/debug/*.so ./lib/x86_64-unknown-linux-gnu
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-unknown-linux-gnu 
+cargo build --target x86_64-unknown-linux-gnu
 if [[ -f ./lib/x86_64-unknown-linux-gnu/*.so ]]; then
   rm ./lib/x86_64-unknown-linux-gnu/*.so
 fi
@@ -494,7 +494,7 @@ godot --export "Linux/X11.x86_64-unknown-linux-gnu.release" ./bin/x86_64-unknown
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-apple-darwin 
+cargo build --target x86_64-apple-darwin
 mkdir -p ./lib/x86_64-apple-darwin
 mv ./target/x86_64-apple-darwin/debug/*.dylib ./lib/x86_64-apple-darwin
 '''
@@ -503,7 +503,7 @@ mv ./target/x86_64-apple-darwin/debug/*.dylib ./lib/x86_64-apple-darwin
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-apple-darwin 
+cargo build --target x86_64-apple-darwin
 if [[ -f ./lib/x86_64-apple-darwin/*.dylib ]]; then
   rm ./lib/x86_64-apple-darwin/*.dylib
 fi
@@ -564,7 +564,7 @@ godot --export "Mac OSX.x86_64-apple-darwin.release" ./bin/x86_64-apple-darwin/s
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target aarch64-apple-ios 
+cargo build --target aarch64-apple-ios
 mkdir -p ./lib/aarch64-apple-ios
 mv ./target/aarch64-apple-ios/debug/*.a ./lib/aarch64-apple-ios
 '''
@@ -573,7 +573,7 @@ mv ./target/aarch64-apple-ios/debug/*.a ./lib/aarch64-apple-ios
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target aarch64-apple-ios 
+cargo build --target aarch64-apple-ios
 if [[ -f ./lib/aarch64-apple-ios/*.a ]]; then
   rm ./lib/aarch64-apple-ios/*.a
 fi
@@ -634,7 +634,7 @@ godot --export "iOS.aarch64-apple-ios.release" ./bin/aarch64-apple-ios/slippery.
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-pc-windows-gnu 
+cargo build --target i686-pc-windows-gnu
 mkdir -p ./lib/i686-pc-windows-gnu
 mv ./target/i686-pc-windows-gnu/debug/*.dll ./lib/i686-pc-windows-gnu
 '''
@@ -643,7 +643,7 @@ mv ./target/i686-pc-windows-gnu/debug/*.dll ./lib/i686-pc-windows-gnu
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-pc-windows-gnu 
+cargo build --target i686-pc-windows-gnu
 if [[ -f ./lib/i686-pc-windows-gnu/*.dll ]]; then
   rm ./lib/i686-pc-windows-gnu/*.dll
 fi
@@ -704,7 +704,7 @@ godot --export "Windows Desktop.i686-pc-windows-gnu.release" ./bin/i686-pc-windo
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-pc-windows-gnu 
+cargo build --target x86_64-pc-windows-gnu
 mkdir -p ./lib/x86_64-pc-windows-gnu
 mv ./target/x86_64-pc-windows-gnu/debug/*.dll ./lib/x86_64-pc-windows-gnu
 '''
@@ -713,7 +713,7 @@ mv ./target/x86_64-pc-windows-gnu/debug/*.dll ./lib/x86_64-pc-windows-gnu
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-pc-windows-gnu 
+cargo build --target x86_64-pc-windows-gnu
 if [[ -f ./lib/x86_64-pc-windows-gnu/*.dll ]]; then
   rm ./lib/x86_64-pc-windows-gnu/*.dll
 fi
@@ -774,7 +774,7 @@ godot --export "Windows Desktop.x86_64-pc-windows-gnu.release" ./bin/x86_64-pc-w
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-pc-windows-msvc 
+cargo build --target i686-pc-windows-msvc
 mkdir -p ./lib/i686-pc-windows-msvc
 mv ./target/i686-pc-windows-msvc/debug/*.dll ./lib/i686-pc-windows-msvc
 '''
@@ -783,7 +783,7 @@ mv ./target/i686-pc-windows-msvc/debug/*.dll ./lib/i686-pc-windows-msvc
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target i686-pc-windows-msvc 
+cargo build --target i686-pc-windows-msvc
 if [[ -f ./lib/i686-pc-windows-msvc/*.dll ]]; then
   rm ./lib/i686-pc-windows-msvc/*.dll
 fi
@@ -844,7 +844,7 @@ godot --export "Windows Desktop.i686-pc-windows-msvc.release" ./bin/i686-pc-wind
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-pc-windows-msvc 
+cargo build --target x86_64-pc-windows-msvc
 mkdir -p ./lib/x86_64-pc-windows-msvc
 mv ./target/x86_64-pc-windows-msvc/debug/*.dll ./lib/x86_64-pc-windows-msvc
 '''
@@ -853,7 +853,7 @@ mv ./target/x86_64-pc-windows-msvc/debug/*.dll ./lib/x86_64-pc-windows-msvc
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target x86_64-pc-windows-msvc 
+cargo build --target x86_64-pc-windows-msvc
 if [[ -f ./lib/x86_64-pc-windows-msvc/*.dll ]]; then
   rm ./lib/x86_64-pc-windows-msvc/*.dll
 fi
@@ -914,7 +914,7 @@ godot --export "Windows Desktop.x86_64-pc-windows-msvc.release" ./bin/x86_64-pc-
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target wasm32-unknown-emscripten 
+cargo build --target wasm32-unknown-emscripten
 mkdir -p ./lib/wasm32-unknown-emscripten
 mv ./target/wasm32-unknown-emscripten/debug/*.wasm ./lib/wasm32-unknown-emscripten
 '''
@@ -923,7 +923,7 @@ mv ./target/wasm32-unknown-emscripten/debug/*.wasm ./lib/wasm32-unknown-emscript
 dependencies = ["clean"]
 script_runner = "@shell"
 script = '''
-cargo build --target wasm32-unknown-emscripten 
+cargo build --target wasm32-unknown-emscripten
 if [[ -f ./lib/wasm32-unknown-emscripten/*.wasm ]]; then
   rm ./lib/wasm32-unknown-emscripten/*.wasm
 fi

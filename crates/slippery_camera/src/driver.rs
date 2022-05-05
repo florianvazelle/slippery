@@ -1,4 +1,4 @@
-use crate::{rig::RigUpdateParams};
+use crate::rig::RigUpdateParams;
 
 use gdnative::prelude::*;
 

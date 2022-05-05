@@ -20,12 +20,13 @@ impl Game {
         // Toggle pause menu.
         if event.is_action_pressed("ui_cancel", false, false) {
             let hud = unsafe { owner.get_node_as_instance::<Hud>("Hud").unwrap() };
-            hud.map_mut(|x, o| x.toggle(&*o)).expect("Unable to get hud");
+            hud.map_mut(|x, o| x.toggle(&*o))
+                .expect("Unable to get hud");
         }
     }
 }
 
-/// Set the pause mode. 
+/// Set the pause mode.
 pub fn set_pause_mode(node: &Node, enable: bool) {
     let tree = node.get_tree().unwrap();
     let tree = unsafe { tree.assume_safe() };

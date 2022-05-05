@@ -1,11 +1,11 @@
 
 <div align="center">
-  
+
 # 🕹️ Slippery
 
 ![Godot Badge](https://img.shields.io/badge/godot-3.4.4-blue)
 
-A Godot game using [`godot-rust`](https://github.com/godot-rust/godot-rust/), inspired by [*Monkey Target*](https://supermonkeyball.fandom.com/wiki/Monkey_Target).  
+A Godot game using [`godot-rust`](https://github.com/godot-rust/godot-rust/), inspired by [*Monkey Target*](https://supermonkeyball.fandom.com/wiki/Monkey_Target).
 
 </div>
 

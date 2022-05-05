@@ -28,7 +28,12 @@ impl Ball {
         let up = Vector3::new(0.0, 1.0, 0.0);
         let mut dir = Vector3::new(0.0, 0.0, 0.0);
 
-        let cam_xform = unsafe { owner.get_node_as::<Camera>("CamBall").unwrap().global_transform() };
+        let cam_xform = unsafe {
+            owner
+                .get_node_as::<Camera>("CamBall")
+                .unwrap()
+                .global_transform()
+        };
 
         // TODO : use `fn _input(&self, owner: &Node, event: Ref<InputEvent>);` instead.
         let input = Input::godot_singleton();
