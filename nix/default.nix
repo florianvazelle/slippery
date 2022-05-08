@@ -29,10 +29,6 @@ in
         shellcheck.enable = true;
         nixpkgs-fmt.enable = true;
         nix-linter.enable = true;
-        # rust
-        rustfmt.enable = true;
-        clippy.enable = true;
-        cargo-check.enable = true;
       };
       # generated files
       excludes = [ "^nix/sources\.nix$" ];

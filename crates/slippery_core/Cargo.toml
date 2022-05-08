@@ -3,6 +3,7 @@ name = "slippery-core"
 version = "0.1.0"
 authors = ["florianvazelle <ponythugflorian@gmail.com>"]
 edition = "2021"
+publish = false
 
 [dependencies]
 gdnative = "0.10"

@@ -13,5 +13,4 @@ slippery-debug = { path = "crates/slippery_debug", version = "0.1.0" }
 crate-type = ["cdylib"]
 
 [workspace]
-members = ["crates/*"]
-exclude = [".github", "addons", "assets", "bin", "lib", "native", "resources", "scenes", "shaders"]
+exclude = [".github", "addons", "assets", "bin", "lib", "native", "nix", "resources", "scenes", "shaders"]

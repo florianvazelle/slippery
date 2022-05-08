@@ -18,13 +18,13 @@ jobs:
     - run: GITHUB_PATH= nix-shell --run "niv update"
     - uses: cachix/cachix-action@v10
       with:
-        name: slippery
+        name: florianvazelle
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix-build
     - run: nix-shell --run "pre-commit run -a"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4.0.3
       with:
-        commit-message: "build: update niv dependencies"
-        title: "build: update niv dependencies"
+        commit-message: "chore(deps): update niv dependencies"
+        title: "chore(deps): update niv dependencies"
         branch: "automation/update-niv-dependencies"

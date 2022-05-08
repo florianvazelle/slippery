@@ -25,3 +25,9 @@ cargo make run
 
 - [Godot Documentation](https://docs.godotengine.org/en/stable/)
 - [GDNative Crate Documentation](https://docs.rs/gdnative/latest/gdnative/index.html)
+
+### Nix
+
+- http://ghedam.at/15978/an-introduction-to-nix-shell
+- https://www.sam.today/blog/environments-with-nix-shell-learning-nix-pt-1/
+- https://blog.croughan.sh/posts/godot-automation-nixos/
