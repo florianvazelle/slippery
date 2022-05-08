@@ -1,10 +1,9 @@
-with import <nixpkgs> {
-  config.android_sdk.accept_license = true;
-};
+{ project ? import ./nix { } }:
 
-stdenv.mkDerivation {
+project.pkgs.stdenv.mkDerivation
+{
   name = "slippery";
-  nativeBuildInputs = [
+  nativeBuildInputs = with project.pkgs; [
     cacert
     emacs
     godot
@@ -14,7 +13,7 @@ stdenv.mkDerivation {
     pkgconfig
     sccache
   ];
-  buildInputs = [
+  buildInputs = with project.pkgs; [
     alsaLib
     clang
     glibc_multi
@@ -27,14 +26,16 @@ stdenv.mkDerivation {
     xorg.libXrandr
     xorg.libXrender
     zlib
-  ];
+  ]
+  ++ builtins.attrValues project.devTools;
   shellHook = ''
     export PATH=$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH
+    ${project.ci.pre-commit-check.shellHook}
   '';
 
   # Set Environment Variables
   EDITOR = "emacs";
-  LD_LIBRARY_PATH = builtins.concatStringsSep ":"  [
+  LD_LIBRARY_PATH = builtins.concatStringsSep ":" (with project.pkgs; [
     "${alsaLib}/lib/"
     "${libGL}/lib/"
     "${libpulseaudio}/lib/"
@@ -45,8 +46,8 @@ stdenv.mkDerivation {
     "${xorg.libXrandr}/lib/"
     "${xorg.libXrender}/lib/"
     "${zlib}/lib/"
-  ];
-  LIBCLANG_PATH = "${llvmPackages.libclang}/lib";
+  ]);
+  LIBCLANG_PATH = "${project.pkgs.llvmPackages.libclang}/lib";
   RUST_BACKTRACE = 1;
-  RUSTC_WRAPPER = "${sccache}/bin/sccache";
+  RUSTC_WRAPPER = "${project.pkgs.sccache}/bin/sccache";
 }

@@ -27,3 +27,8 @@ Cargo.lock
 # Slippery-specific ignores
 bin/
 lib/
+
+# Nix-specific ignores
+result
+result-*
+.pre-commit-config.yaml
