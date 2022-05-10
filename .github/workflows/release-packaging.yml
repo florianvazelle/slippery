@@ -37,7 +37,7 @@ jobs:
       - name: Release Build
         run: nix-shell --run "cargo install --force cargo-make && cargo make export-${{ matrix.target }}-release"
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: slippery-${{ matrix.target }}
           path: bin/${{ matrix.target }}/
