@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://native/dbg/Fps.gdns" type="Script" id=1]
+[ext_resource path="res://native/TitleCamera.gdns" type="Script" id=2]
+[ext_resource path="res://assets/fonts/DotGothic16-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://native/TitleScreen.gdns" type="Script" id=4]
+[ext_resource path="res://resources/Outline.tres" type="Material" id=5]
+[ext_resource path="res://shaders/toon.shader" type="Shader" id=6]
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=2]
+next_pass = ExtResource( 5 )
+shader = ExtResource( 6 )
+shader_param/albedo = Color( 0.0980392, 0.180392, 0.862745, 1 )
+shader_param/specular = 0.0
+shader_param/specular_amount = 0.586
+shader_param/specular_smoothness = 0.192
+shader_param/rim = 0.138
+shader_param/rim_amount = 0.285
+shader_param/rim_smoothness = 0.323
+shader_param/metallic = 0.26
+shader_param/roughness = 0.085
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+
+[node name="TitleScreen" type="Spatial"]
+
+[node name="Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu"]
+autoplay = true
+
+[node name="FpsCounter" type="Label" parent="Menu"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "FPS: 0"
+align = 1
+valign = 1
+script = ExtResource( 1 )
+
+[node name="Title" type="Label" parent="Menu"]
+anchor_right = 1.0
+margin_bottom = 238.0
+custom_colors/font_color = Color( 1, 0.733333, 0.105882, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "///// Slippery /////"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="Menu"]
+margin_left = 160.0
+margin_top = 331.0
+margin_right = 568.0
+margin_bottom = 561.0
+
+[node name="NewGame" type="ToolButton" parent="Menu/GridContainer"]
+margin_right = 408.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+text = "> New Game"
+align = 0
+
+[node name="QuitGame" type="ToolButton" parent="Menu/GridContainer"]
+margin_top = 117.0
+margin_right = 408.0
+margin_bottom = 230.0
+custom_fonts/font = SubResource( 1 )
+text = "> Quit Game"
+align = 0
+
+[node name="TitleCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.828706, 0.559685, 0, -0.559685, 0.828706, 0, 1.51313, 0 )
+script = ExtResource( 2 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0 )
+material = SubResource( 2 )
+
+[connection signal="pressed" from="Menu/GridContainer/NewGame" to="Menu" method="on_newgame_button_pressed"]
+[connection signal="pressed" from="Menu/GridContainer/QuitGame" to="Menu" method="on_quitgame_button_pressed"]

@@ -1,0 +1,6 @@
+[package]
+name = "slippery-macro"
+version = "0.1.0"
+authors = ["florianvazelle <ponythugflorian@gmail.com>"]
+edition = "2021"
+publish = false

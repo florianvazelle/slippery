@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/DotGothic16-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://native/Hud.gdns" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Hud" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="ContinueParty" type="ToolButton" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -264.0
+margin_top = -4.0
+margin_right = 264.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 1 )
+text = "Continue"
+
+[node name="QuitParty" type="ToolButton" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -272.0
+margin_top = 92.0
+margin_right = 272.0
+margin_bottom = 168.0
+custom_fonts/font = SubResource( 1 )
+text = "Quit Party"
+
+[connection signal="pressed" from="ContinueParty" to="." method="on_continueparty_button_pressed"]
+[connection signal="pressed" from="QuitParty" to="." method="on_quitparty_button_pressed"]
