@@ -33,6 +33,9 @@ jobs:
           toolchain: stable
           override: true
       - uses: davidB/rust-cargo-make@v1
+      - uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "10.0"
       - run: |
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
