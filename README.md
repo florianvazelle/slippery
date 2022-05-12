@@ -31,3 +31,11 @@ cargo make run
 - http://ghedam.at/15978/an-introduction-to-nix-shell
 - https://www.sam.today/blog/environments-with-nix-shell-learning-nix-pt-1/
 - https://blog.croughan.sh/posts/godot-automation-nixos/
+- https://github.com/NixOS/nixpkgs/blob/nixos-21.11/pkgs/games/oh-my-git/default.nix
+- https://github.com/NixOS/nixpkgs/blob/master/lib/licenses.nix
+- https://nixos.wiki/wiki/Development_environment_with_nix-shell#nix_develop
+- https://nixos.wiki/wiki/Nixpkgs_with_OpenGL_on_non-NixOS
+- https://github.com/NixOS/nixpkgs/issues/9415
+- https://github.com/TASEmulators/BizHawk/blob/abd6324ca4741b95c8e2a07b0bdcacae8ec2f596/default.nix#L124-L151
+- https://github.com/guibou/nixGL
+- https://hoverbear.org/blog/rust-bindgen-in-nix/

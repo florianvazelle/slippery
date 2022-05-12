@@ -1,6 +1,8 @@
 [package]
 name = "slippery"
 version = "0.1.0"
+description = "A Work in Progress Monkey Target inspired game"
+homepage = "https://github.com/florianvazelle/slippery"
 authors = ["florianvazelle <ponythugflorian@gmail.com>"]
 edition = "2021"
 
