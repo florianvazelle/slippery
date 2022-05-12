@@ -34,9 +34,9 @@ jobs:
           override: true
       - uses: davidB/rust-cargo-make@v1
       - run: |
-        mkdir -v -p ~/.local/share/godot/templates
-        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-        cargo make export-${{ matrix.target }}-release
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          cargo make export-${{ matrix.target }}-release
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
