@@ -6,20 +6,24 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  GODOT_VERSION: 3.4.4
+
 jobs:
   release:
     name: Release Packaging
     runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:3.4.4
     strategy:
       fail-fast: false
       matrix:
         target: [
-          # aarch64-linux-android, armv7-linux-androideabi, i686-linux-android,
-          # x86_64-linux-android, i686-unknown-linux-gnu,
-          x86_64-unknown-linux-gnu,
-          # x86_64-apple-darwin, aarch64-apple-ios, i686-pc-windows-gnu,
-          # x86_64-pc-windows-gnu, i686-pc-windows-msvc, x86_64-pc-windows-msvc,
-          # wasm32-unknown-emscripten,
+          aarch64-linux-android, armv7-linux-androideabi, i686-linux-android,
+          x86_64-linux-android, i686-unknown-linux-gnu, x86_64-unknown-linux-gnu,
+          x86_64-apple-darwin, aarch64-apple-ios, i686-pc-windows-gnu,
+          x86_64-pc-windows-gnu, i686-pc-windows-msvc, x86_64-pc-windows-msvc,
+          wasm32-unknown-emscripten,
         ]
     steps:
       - uses: actions/checkout@v3
@@ -28,16 +32,22 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - uses: cachix/install-nix-action@v17
-      - uses: cachix/cachix-action@v10
-        with:
-          name: florianvazelle
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix-build
-      - name: Release Build
-        run: nix-shell --run "cargo install --force cargo-make && cargo make export-${{ matrix.target }}-release"
+      - uses: davidB/rust-cargo-make@v1
+      - run: |
+        mkdir -v -p ~/.local/share/godot/templates
+        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+        cargo make export-${{ matrix.target }}-release
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: slippery-${{ matrix.target }}
           path: bin/${{ matrix.target }}/
+      - name: Install rsync
+        if: ${{ matrix.target == 'wasm32-unknown-emscripten' }}
+        run: apt-get update && apt-get install -y rsync
+      - name: Deploy to GitHub Pages
+        if: ${{ matrix.target == 'wasm32-unknown-emscripten' }}
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages
+          folder: bin/${{ matrix.target }}/
