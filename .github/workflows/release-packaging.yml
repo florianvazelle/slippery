@@ -1,0 +1,30 @@
+name: Release Packaging
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  GODOT_VERSION: 3.4.4
+
+jobs:
+  release:
+    name: Release Packaging
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [x86_64-unknown-linux-gnu]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build docker image
+        run: if [[ $(docker inspect --type=image godot | wc -l) -eq 1 ]]; then docker build --file Dockerfile --build-arg GODOT_VERSION=3.4.4 --tag godot:3.4.4 .; fi
+      - name: Run export
+        run: docker run --volume $PWD:/srv --workdir /srv godot:3.4.4 cargo make export-${{ matrix.target }}-release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: slippery-${{ matrix.target }}
+          path: bin/${{ matrix.target }}/

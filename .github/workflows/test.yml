@@ -1,0 +1,33 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  rust-test:
+    name: Test Rust Crate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+  nix-test:
+    name: Test Nix Shell
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v17
+    - uses: cachix/cachix-action@v10
+      with:
+        name: florianvazelle
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix-build
+      env:
+        NIX_PATH: nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-21.11.tar.gz
