@@ -1,7 +1,7 @@
 use gdnative::api::*;
 use gdnative::prelude::*;
 
-use slippery_camera::prelude::*;
+use slippery_camera::{drivers::*, rig::CameraRig};
 
 const RADIUS: f32 = 50.0;
 

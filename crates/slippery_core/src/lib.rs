@@ -3,6 +3,7 @@ pub mod cam_ball;
 pub mod game;
 pub mod game_state;
 pub mod hud;
+pub mod music;
 pub mod title_cam;
 pub mod title_screen;
 

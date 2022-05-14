@@ -3,7 +3,7 @@ name = "slippery-camera"
 version = "0.1.0"
 authors = ["florianvazelle <ponythugflorian@gmail.com>"]
 edition = "2021"
-description = "Composable camera rigs, adapted from dolly to Godot Engine"
+description = "Composable camera rigs, adapted from dolly for the Godot Engine"
 publish = false
 
 [dependencies]

@@ -1,7 +1,7 @@
 use gdnative::api::{Camera, PhysicsServer, RigidBody};
 use gdnative::prelude::*;
 
-use slippery_camera::prelude::*;
+use slippery_camera::{drivers::*, rig::CameraRig};
 use slippery_macro::deg2rad;
 
 use crate::utils::is;
@@ -22,7 +22,6 @@ pub struct CameraBall {
     autoturn_speed: f32,
     max_height: f32,
     min_height: f32,
-
     rig: CameraRig,
 }
 

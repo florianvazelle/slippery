@@ -25,7 +25,7 @@ impl GameState {
     }
 }
 
-pub fn load_game_state(node: &Node) -> Option<Instance<GameState, Unique>> {
+pub(crate) fn load_game_state(node: &Node) -> Option<Instance<GameState, Unique>> {
     let tree = node.get_tree()?;
     let tree = unsafe { tree.assume_safe() };
 

@@ -27,7 +27,7 @@ impl Game {
 }
 
 /// Set the pause mode.
-pub fn set_pause_mode(node: &Node, enable: bool) {
+pub(crate) fn set_pause_mode(node: &Node, enable: bool) {
     let tree = node.get_tree().unwrap();
     let tree = unsafe { tree.assume_safe() };
     tree.set_pause(enable);

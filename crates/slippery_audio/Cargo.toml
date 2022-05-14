@@ -1,0 +1,11 @@
+[package]
+name = "slippery-audio"
+version = "0.1.0"
+authors = ["florianvazelle <ponythugflorian@gmail.com>"]
+edition = "2021"
+description = "Realtime procedurally generated sound effects, adapted from usfx for the Godot Engine"
+publish = false
+
+[dependencies]
+gdnative = "0.10"
+randomize = "3.0.1"
