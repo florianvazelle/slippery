@@ -12,7 +12,7 @@ impl Fps {
     }
 
     #[export]
-    fn _process(&self, owner: &Label, _delta: f64) {
+    fn _process(&self, owner: &Label, _delta: f32) {
         let engine = Engine::godot_singleton();
 
         let template = GodotString::from("FPS {0}");

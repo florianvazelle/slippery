@@ -6,6 +6,7 @@ use gdnative::prelude::{godot_init, InitHandle};
 /// Registers all exposed classes to Godot.
 fn init(handle: InitHandle) {
     handle.add_class::<fps::Fps>();
+    handle.add_class::<ball_resource::BallResource>();
     handle.add_class::<ball::Ball>();
     handle.add_class::<game::Game>();
     handle.add_class::<game_state::GameState>();

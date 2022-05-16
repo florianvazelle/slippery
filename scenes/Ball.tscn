@@ -10,9 +10,50 @@
 [ext_resource path="res://addons/dolly-gd/native/Smooth.gdns" type="Script" id=8]
 [ext_resource path="res://addons/dolly-gd/native/YawPitch.gdns" type="Script" id=9]
 [ext_resource path="res://scripts/cam_ball.gd" type="Script" id=10]
+[ext_resource path="res://native/game.gdnlib" type="GDNativeLibrary" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.1
+
+[sub_resource type="NativeScript" id=5]
+class_name = "BallResource"
+library = ExtResource( 5 )
+
+[sub_resource type="Resource" id=6]
+script = SubResource( 5 )
+handle_return_speed = 2.0
+max_speed = 15.0
+speed_clamp = 50.0
+acceleration = 4.0
+movement_acceleration = 20.0
+slow_down_acceleration = 2.0
+turn_speed = 2.0
+falling/air/acceleration = 5.0
+falling/air/turn_speed = 2.0
+falling/direction_speed = 0.5
+flying/direction_speed = 2.0
+flying/rotation_speed = 6.0
+flying/up_down_speed = 0.1
+flying/left_right_speed = 0.1
+flying/roll_speed = 0.1
+flying/acceleration = 4.0
+flying/decelleration = 1.0
+flying/speed = 0.0
+flying/min_speed = 0.0
+flying/adjustement_speed = 0.0
+flying/adjustement_lerp = 0.0
+flying/physics/gravity_amt = 2.0
+flying/physics/glide_gravity_amt = 4.0
+flying/physics/gravity_build_speed = 3.0
+flying/physics/velocity_gain = 2.0
+flying/physics/velocity_loss = 1.0
+flying/physics/lower_limit = -6.0
+flying/physics/upper_limit = 4.0
+flying/physics/glide_time = 10.0
+impact/speed_limit_before_crash = 18.0
+impact/stun_push_back = 50.0
+impact/stunned_time = 0.25
+grounded_timer_before_jump = 0.2
 
 [sub_resource type="SphereMesh" id=2]
 
@@ -76,6 +117,7 @@ predictive = true
 [node name="Ball" type="RigidBody"]
 physics_material_override = SubResource( 1 )
 script = ExtResource( 1 )
+ball_resource = SubResource( 6 )
 
 [node name="MeshSphere" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
