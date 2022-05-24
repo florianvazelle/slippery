@@ -1,0 +1,3 @@
+[submodule "addons/dolly-gd"]
+	path = addons/dolly-gd
+	url = https://github.com/florianvazelle/dolly-gd.git

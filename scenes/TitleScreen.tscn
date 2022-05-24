@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://native/dbg/Fps.gdns" type="Script" id=1]
-[ext_resource path="res://native/TitleCamera.gdns" type="Script" id=2]
+[ext_resource path="res://addons/dolly-gd/native/Position.gdns" type="Script" id=2]
 [ext_resource path="res://assets/fonts/DotGothic16-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://native/TitleScreen.gdns" type="Script" id=4]
 [ext_resource path="res://resources/Outline.tres" type="Material" id=5]
 [ext_resource path="res://shaders/toon.shader" type="Shader" id=6]
+[ext_resource path="res://addons/dolly-gd/native/DollyCamera.gdns" type="Script" id=7]
+[ext_resource path="res://addons/dolly-gd/native/LookAt.gdns" type="Script" id=8]
+[ext_resource path="res://scripts/title_cam.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=4]
 size = 60
@@ -35,6 +38,18 @@ shader_param/emission = Color( 0, 0, 0, 1 )
 shader_param/emission_energy = 1.0
 shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=7]
+resource_name = "Position"
+script = ExtResource( 2 )
+position = Vector3( 50, 15, 50 )
+
+[sub_resource type="Resource" id=8]
+resource_name = "LookAt"
+script = ExtResource( 8 )
+smoothness = 0.0
+target = Vector3( 0, 0, 0 )
+predictive = false
 
 [node name="TitleScreen" type="Spatial"]
 
@@ -84,13 +99,16 @@ custom_fonts/font = SubResource( 1 )
 text = "> Quit Game"
 align = 0
 
-[node name="TitleCamera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.828706, 0.559685, 0, -0.559685, 0.828706, 0, 1.51313, 0 )
-script = ExtResource( 2 )
-
 [node name="CSGBox" type="CSGBox" parent="."]
 transform = Transform( 10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0 )
 material = SubResource( 2 )
+
+[node name="DollyCamera" type="Camera" parent="."]
+script = ExtResource( 7 )
+components = [ SubResource( 7 ), SubResource( 8 ) ]
+
+[node name="Behavior" type="Node" parent="DollyCamera"]
+script = ExtResource( 10 )
 
 [connection signal="pressed" from="Menu/GridContainer/NewGame" to="Menu" method="on_newgame_button_pressed"]
 [connection signal="pressed" from="Menu/GridContainer/QuitGame" to="Menu" method="on_quitgame_button_pressed"]

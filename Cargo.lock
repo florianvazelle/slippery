@@ -449,19 +449,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "slippery-camera"
-version = "0.1.0"
-dependencies = [
- "gdnative",
- "slippery-macro",
-]
-
-[[package]]
 name = "slippery-core"
 version = "0.1.0"
 dependencies = [
  "gdnative",
- "slippery-camera",
  "slippery-macro",
 ]
 

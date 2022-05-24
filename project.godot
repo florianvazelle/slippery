@@ -8,6 +8,64 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Arm",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/Arm.gdns"
+}, {
+"base": "Camera",
+"class": "DollyCamera",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/DollyCamera.gdns"
+}, {
+"base": "EditorPlugin",
+"class": "DollyPlugin",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/DollyPlugin.gdns"
+}, {
+"base": "Resource",
+"class": "LockPosition",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/LockPosition.gdns"
+}, {
+"base": "Resource",
+"class": "LookAt",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/LookAt.gdns"
+}, {
+"base": "Resource",
+"class": "Position",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/Position.gdns"
+}, {
+"base": "Resource",
+"class": "Rotation",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/Rotation.gdns"
+}, {
+"base": "Resource",
+"class": "Smooth",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/Smooth.gdns"
+}, {
+"base": "Resource",
+"class": "YawPitch",
+"language": "NativeScript",
+"path": "res://addons/dolly-gd/native/YawPitch.gdns"
+} ]
+_global_script_class_icons={
+"Arm": "res://addons/dolly-gd/icons/Object.svg",
+"DollyCamera": "res://addons/dolly-gd/icons/Camera3D.svg",
+"DollyPlugin": "",
+"LockPosition": "res://addons/dolly-gd/icons/Object.svg",
+"LookAt": "res://addons/dolly-gd/icons/Object.svg",
+"Position": "res://addons/dolly-gd/icons/Object.svg",
+"Rotation": "res://addons/dolly-gd/icons/Object.svg",
+"Smooth": "res://addons/dolly-gd/icons/Object.svg",
+"YawPitch": "res://addons/dolly-gd/icons/Object.svg"
+}
+
 [application]
 
 config/name="slippery"
@@ -17,6 +75,10 @@ config/icon="res://assets/godot-ferris-32x32.png"
 [autoload]
 
 GameState="*res://native/GameState.gdns"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/dolly-gd/plugin.cfg" )
 
 [input]
 
