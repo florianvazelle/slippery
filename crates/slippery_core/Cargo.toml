@@ -7,4 +7,5 @@ publish = false
 
 [dependencies]
 gdnative = "0.10"
+lerp = "0.4.0"
 slippery-macro = { path = "../slippery_macro", version = "0.1.0" }

@@ -55,3 +55,6 @@ visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 script = ExtResource( 6 )
+
+[connection signal="body_entered" from="Spatial/Ball" to="Spatial/Ball" method="on_ball_body_entered"]
+[connection signal="body_exited" from="Spatial/Ball" to="." method="on_ball_body_existed"]

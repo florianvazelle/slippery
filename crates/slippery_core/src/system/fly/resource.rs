@@ -5,7 +5,7 @@ use lerp::Lerp;
 
 #[derive(NativeClass)]
 #[inherit(Resource)]
-pub struct BallResource {
+pub struct FlyResource {
     /// How quickly our handle on our character is returned to normal after a force is added (such as jumping
     #[property(default = 2.0)]
     pub handle_return_speed: f32, 
@@ -142,12 +142,13 @@ pub struct BallResource {
     pub input_left: bool,
     pub input_horizontal: f32,
     pub input_vertical: f32,
+    pub body_collision: Option<Ref<Node>>
 } 
 
 #[methods]
-impl BallResource {
+impl FlyResource {
     fn new(_owner: &Resource) -> Self {
-        BallResource {
+        FlyResource {
             handle_return_speed: 0.0, 
             act_grav_amt: 0.0, 
             floor_timer: 0.0, 
@@ -198,6 +199,7 @@ impl BallResource {
             input_left: false,
             input_horizontal: 0.0,
             input_vertical: 0.0,
+            body_collision: None,
         }
     }
 
@@ -306,7 +308,7 @@ impl BallResource {
     /// Rotate our upwards direction
     pub(crate) fn rotate_self(&self, owner: &RigidBody, direction: Vector3, delta: f32, gravity_spd: f32) {
         let mut transform = owner.global_transform();
-        let lerp_dir = transform.basis.b().linear_interpolate(direction, delta * gravity_spd);
+        let _lerp_dir = transform.basis.b().linear_interpolate(direction, delta * gravity_spd);
         transform.basis = transform.basis.rotated(transform.basis.b(), delta); //lerp_dir);
         owner.set_transform(transform);
     }

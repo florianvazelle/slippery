@@ -1,7 +1,7 @@
 use gdnative::api::*;
 use gdnative::prelude::*;
 
-use crate::hud::Hud;
+use crate::ui::hud::Hud;
 
 #[derive(NativeClass)]
 #[inherit(Spatial)]

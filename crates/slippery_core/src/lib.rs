@@ -1,10 +1,7 @@
-pub mod ball_states;
-pub mod ball_resource;
-pub mod ball_state;
+pub mod sm;
+pub mod sm_godot;
+pub mod system;
+pub mod ui;
 pub mod ball;
-pub mod game;
 pub mod game_state;
-pub mod hud;
-pub mod title_screen;
-
-mod utils;
+pub mod game;
