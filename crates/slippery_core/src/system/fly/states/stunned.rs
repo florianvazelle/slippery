@@ -1,8 +1,7 @@
 use gdnative::api::RigidBody;
 use gdnative::prelude::*;
 
-use crate::sm::*;
-use crate::sm_godot::GodotState;
+use sm_gd::*;
 use crate::system::fly::resource::FlyResource;
 
 #[derive(Debug)]
@@ -10,13 +9,11 @@ pub struct Stunned {
     pub push_direction: Vector3
 }
 
-impl State for Stunned {}
-
 impl GodotState for Stunned {
     type Owner = RigidBody;
     type Resource = FlyResource;
 
-    fn init(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) {
+    fn init(&self, owner: &Self::Owner, resource: &mut Self::Resource) {
         resource.stun_timer = resource.stunned_time;
 
         // Set physics
@@ -30,11 +27,7 @@ impl GodotState for Stunned {
         owner.set_gravity_scale(1.0);
     }
 
-    fn update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn StateTraits>> {
-        None
-    }
-
-    fn physics_update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn StateTraits>> {
+    fn physics_update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn GodotStateTraits<Owner = Self::Owner, Resource = Self::Resource>>> {
         // Reduce stun timer
         if resource.stun_timer > 0.0 {
             resource.stun_timer -= delta;
@@ -60,6 +53,4 @@ impl GodotState for Stunned {
 
         None
     }
-
-    fn integrate_forces(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) {}
 }

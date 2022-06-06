@@ -10,10 +10,13 @@ pub struct FlyResource {
     #[property(default = 2.0)]
     pub handle_return_speed: f32, 
     /// The actual gravity that is applied to our character
+    #[property] // TODO : remove
     pub act_grav_amt: f32, 
     /// How long we are on the floor
+    #[property] // TODO : remove
     pub floor_timer: f32, 
     /// The air timer counting our current actions performed in air
+    #[property] // TODO : remove
     pub action_air_timer: f32,
 
     /// Max speed for basic movement
@@ -23,6 +26,7 @@ pub struct FlyResource {
     #[property(default = 50.0)]
     pub speed_clamp: f32, 
     /// Our actual acceleration
+    #[property] // TODO : remove
     pub act_accel: f32, 
     /// How quickly we build speed
     #[property(default = 4.0)]
@@ -34,105 +38,111 @@ pub struct FlyResource {
     #[property(default = 2.0)]
     pub slow_down_acceleration: f32, 
     /// How quickly we turn on the ground
-    #[property(default = 2.0)]
+    #[property(default = 5.0)]
     pub turn_speed: f32, 
     /// If we have flown this will be reset at 0, and effect turn speed on the ground
+    #[property] // TODO : remove
     pub flown_adjustment_lerp: f32, 
     /// Our actual speed
+    #[property] // TODO : remove
     pub act_speed: f32, 
 
     // Where to move to
+    #[property] // TODO : remove
     pub move_direction: Vector3,
+    #[property] // TODO : remove
     pub downward_direction: Vector3, 
 
     /// How quickly we adjust to new speeds when in air
-    #[property(default = 5.0, path = "falling/air/acceleration")]
+    #[property(default = 5.0, /* path = "falling/air/acceleration" */)]
     pub air_acceleration: f32,  
     /// 
-    #[property(default = 2.0, path = "falling/air/turn_speed")]
+    #[property(default = 2.0, /* path = "falling/air/turn_speed" */ )]
     pub turn_speed_in_air: f32,
     /// How quickly we will return to a normal direction
-    #[property(default = 0.5, path = "falling/direction_speed")]
+    #[property(default = 0.5, /* path = "falling/direction_speed" */ )]
     pub falling_direction_speed: f32,
 
     /// How much influence our direction relative to the camera will influence our flying
-    #[property(default = 2.0, path = "flying/direction_speed")]
+    #[property(default = 2.0, /* path = "flying/direction_speed" */ )]
     pub flying_direction_speed: f32,  
     /// How fast we turn in air overall
-    #[property(default = 6.0, path = "flying/rotation_speed")]
+    #[property(default = 6.0, /* path = "flying/rotation_speed" */ )]
     pub flying_rotation_speed: f32, 
     /// How fast we rotate up and down
-    #[property(default = 0.1, path = "flying/up_down_speed")]
+    #[property(default = 0.1, /* path = "flying/up_down_speed" */ )]
     pub flying_up_down_speed: f32, 
     /// How fast we rotate left and right
-    #[property(default = 0.1, path = "flying/left_right_speed")]
+    #[property(default = 0.1, /* path = "flying/left_right_speed" */ )]
     pub flying_left_right_speed: f32,  
     /// How fast we roll
-    #[property(default = 0.1, path = "flying/roll_speed")]
+    #[property(default = 0.1, /* path = "flying/roll_speed" */ )]
     pub flying_roll_speed: f32, 
 
     /// How much we accelerate to max speed
-    #[property(default = 4.0, path = "flying/acceleration")]
+    #[property(default = 4.0, /* path = "flying/acceleration" */ )]
     pub flying_acceleration: f32, 
     /// How quickly we slow down when flying
-    #[property(default = 1.0, path = "flying/decelleration")]
+    #[property(default = 1.0, /* path = "flying/decelleration" */ )]
     pub flying_decelleration: f32, 
     /// Our max flying speed
-    #[property(default = 0.0, path = "flying/speed")]
+    #[property(default = 0.0, /* path = "flying/speed" */ )]
     pub flying_speed: f32,
     /// Our flying slow down speed
-    #[property(default = 0.0, path = "flying/min_speed")]
+    #[property(default = 0.0, /* path = "flying/min_speed" */ )]
     pub flying_min_speed: f32, 
 
     /// How quickly our velocity adjusts to the flying speed
-    #[property(default = 0.0, path = "flying/adjustement_speed")]
+    #[property(default = 0.0, /* path = "flying/adjustement_speed" */ )]
     pub flying_adjustement_speed: f32,
     /// The lerp for our adjustment amount 
-    #[property(default = 0.0, path = "flying/adjustement_lerp")]
+    #[property(default = 0.0, /* path = "flying/adjustement_lerp" */ )]
     pub flying_adjustement_lerp: f32,
 
     /// How much gravity will pull us down when flying
-    #[property(default = 2.0, path = "flying/physics/gravity_amt")]
+    #[property(default = 2.0, /* path = "flying/physics/gravity_amt" */ )]
     pub flying_gravity_amt: f32, 
     /// How much gravity affects us when just gliding
-    #[property(default = 4.0, path = "flying/physics/glide_gravity_amt")]
+    #[property(default = 4.0, /* path = "flying/physics/glide_gravity_amt" */ )]
     pub glide_gravity_amt: f32, 
     /// How much our gravity is lerped when stopping flying
-    #[property(default = 3.0, path = "flying/physics/gravity_build_speed")]
+    #[property(default = 3.0, /* path = "flying/physics/gravity_build_speed" */ )]
     pub flying_gravity_build_speed: f32, 
 
     /// How much velocity we gain for flying downwards
-    #[property(default = 2.0, path = "flying/physics/velocity_gain")]
+    #[property(default = 2.0, /* path = "flying/physics/velocity_gain" */ )]
     pub flying_velocity_gain: f32, 
     /// How much velocity we lose for flying upwards
-    #[property(default = 1.0, path = "flying/physics/velocity_loss")]
+    #[property(default = 1.0, /* path = "flying/physics/velocity_loss" */ )]
     pub flying_velocity_loss: f32, 
     /// How much we fly down before a boost
-    #[property(default = -6.0, path = "flying/physics/lower_limit")]
+    #[property(default = -6.0, /* path = "flying/physics/lower_limit" */ )]
     pub flying_lower_limit: f32, 
     /// How much we fly up before a boost;
-    #[property(default = 4.0, path = "flying/physics/upper_limit")]
+    #[property(default = 4.0, /* path = "flying/physics/upper_limit" */ )]
     pub flying_upper_limit: f32,
     /// How long we glide for when not flying before we start to fall
-    #[property(default = 10.0, path = "flying/physics/glide_time")]
+    #[property(default = 10.0, /* path = "flying/physics/glide_time" */ )]
     pub glide_time: f32, 
 
     /// How fast we have to be going to crash
-    #[property(default = 18.0, path = "impact/speed_limit_before_crash")]
+    #[property(default = 18.0, /* path = "impact/speed_limit_before_crash" */ )]
     pub speed_limit_before_crash: f32, 
     /// How much we are pushed back
-    #[property(default = 50.0, path = "impact/stun_push_back")]
+    #[property(default = 50.0, /* path = "impact/stun_push_back" */ )]
     pub stun_push_back: f32,  
     /// How long we are stunned for
-    #[property(default = 0.25, path = "impact/stunned_time")]
+    #[property(default = 0.25, /* path = "impact/stunned_time" */ )]
     pub stunned_time: f32,
     /// The in use stun timer
+    #[property] // TODO : remove
     pub stun_timer: f32,
     
     /// How long we have to be on the floor before an action can be made
     #[property(default = 0.2)]
     pub grounded_timer_before_jump: f32, 
     /// The time before the animation stops flying
+    #[property] // TODO : remove
     pub flying_timer: f32, 
 
     pub input_fly: bool,
@@ -159,7 +169,7 @@ impl FlyResource {
             acceleration: 4.0, 
             movement_acceleration: 20.0,   
             slow_down_acceleration: 2.0, 
-            turn_speed: 2.0, 
+            turn_speed: 5.0, 
             flown_adjustment_lerp: 0.0, 
             act_speed: 0.0, 
             move_direction: Vector3::new(0.0, 0.0, 0.0),

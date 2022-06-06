@@ -30,21 +30,18 @@ cargo make run
 
 #### State Machine
 
-- http://gameprogrammingpatterns.com/state.html
-- https://www.gdquest.com/tutorial/godot/design-patterns/finite-state-machine/
+- [Game Design Patterns](http://gameprogrammingpatterns.com/)
+- [GDQuest Finite State Machine](https://www.gdquest.com/tutorial/godot/design-patterns/finite-state-machine/)
 
 ### Tools
 
 #### Docker
 
-- https://github.com/abarichello/godot-ci
+- [Godot Dockerfile for CI](https://github.com/abarichello/godot-ci)
 
 #### Nix
 
-- http://ghedam.at/15978/an-introduction-to-nix-shell
-- https://www.sam.today/blog/environments-with-nix-shell-learning-nix-pt-1/
-- https://github.com/NixOS/nixpkgs/blob/nixos-21.11/pkgs/games/oh-my-git/default.nix
-- https://nixos.wiki/wiki/Development_environment_with_nix-shell#nix_develop
-- https://nixos.wiki/wiki/Nixpkgs_with_OpenGL_on_non-NixOS
-- https://github.com/guibou/nixGL
-- https://hoverbear.org/blog/rust-bindgen-in-nix/
+- [Intro to Nix Shell](http://ghedam.at/15978/an-introduction-to-nix-shell)
+- [Dev Env with Nix Shell](https://nixos.wiki/wiki/Development_environment_with_nix-shell#nix_develop)
+- [Rust Bindgen in Nix](https://hoverbear.org/blog/rust-bindgen-in-nix/)
+- [Nix Games Packages](https://github.com/NixOS/nixpkgs/blob/nixos-21.11/pkgs/games/)

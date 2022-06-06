@@ -9,7 +9,6 @@ edition = "2021"
 [dependencies]
 gdnative = "0.10"
 slippery-core = { path = "crates/slippery_core", version = "0.1.0" }
-slippery-debug = { path = "crates/slippery_debug", version = "0.1.0" }
 
 [lib]
 crate-type = ["cdylib"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://native/Ball.gdns" type="Script" id=1]
 [ext_resource path="res://addons/dolly-gd/native/Position.gdns" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://addons/dolly-gd/native/Smooth.gdns" type="Script" id=8]
 [ext_resource path="res://addons/dolly-gd/native/YawPitch.gdns" type="Script" id=9]
 [ext_resource path="res://scripts/cam_ball.gd" type="Script" id=10]
+[ext_resource path="res://resources/BallResource.tres" type="Resource" id=11]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.1
@@ -76,6 +77,7 @@ predictive = true
 [node name="Ball" type="RigidBody"]
 physics_material_override = SubResource( 1 )
 script = ExtResource( 1 )
+ball_resource = ExtResource( 11 )
 
 [node name="MeshSphere" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )

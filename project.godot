@@ -75,6 +75,7 @@ config/icon="res://assets/godot-ferris-32x32.png"
 [autoload]
 
 GameState="*res://native/GameState.gdns"
+DebugOverlay="*res://scenes/DebugOverlay.tscn"
 
 [editor_plugins]
 

@@ -1,23 +1,22 @@
-use gdnative::api::RigidBody;
+use gdnative::api::{Camera, RigidBody};
 use gdnative::prelude::*;
 
-use lerp::Lerp;
+use std::ops::Mul;
 
-use crate::sm::*;
-use crate::sm_godot::GodotState;
+use lerp::Lerp;
+use sm_gd::*;
+
 use crate::system::fly::resource::FlyResource;
 use crate::system::fly::states::Stunned;
 
 #[derive(Debug)]
 pub struct Flying;
 
-impl State for Flying {}
-
 impl GodotState for Flying {
     type Owner = RigidBody;
     type Resource = FlyResource;
 
-    fn init(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) {
+    fn init(&self, owner: &Self::Owner, resource: &mut Self::Resource) {
         // Set animation 
         resource.flying_timer = resource.glide_time;
         
@@ -29,7 +28,7 @@ impl GodotState for Flying {
         owner.set_gravity_scale(0.0);
     }
 
-    fn update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn StateTraits>> {
+    fn update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn GodotStateTraits<Owner = Self::Owner, Resource = Self::Resource>>> {
         let transform = owner.global_transform();
 
         // Reduce air timer 
@@ -37,27 +36,27 @@ impl GodotState for Flying {
             return None;
         }
 
-        // Check wall collision for a crash, if this unit can crash
-        // If we have hit a wall
-        if resource.check_wall(owner) {
-            // If we are going fast enough to crash into a wall
-            if resource.act_speed > resource.speed_limit_before_crash {
-                // Stun character
-                return Some(Box::new(Stunned { push_direction: transform.basis.c() }));
-            }
-        }
+        // // Check wall collision for a crash, if this unit can crash
+        // // If we have hit a wall
+        // if resource.check_wall(owner) {
+        //     // If we are going fast enough to crash into a wall
+        //     if resource.act_speed > resource.speed_limit_before_crash {
+        //         // Stun character
+        //         return Some(Box::new(Stunned { push_direction: transform.basis.c() }));
+        //     }
+        // }
 
-        // Check for ground if we are not holding the flying button
-        if !resource.input_fly {
-            if resource.check_ground(owner) {
-                return Some(Box::new(Stunned { push_direction: transform.basis.c() }));
-            }
-        }
+        // // Check for ground if we are not holding the flying button
+        // if !resource.input_fly {
+        //     if resource.check_ground(owner) {
+        //         return Some(Box::new(Stunned { push_direction: transform.basis.c() }));
+        //     }
+        // }
 
         None
     }
 
-    fn physics_update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn StateTraits>> {
+    fn physics_update(&self, owner: &Self::Owner, resource: &mut Self::Resource, delta: f32) -> Option<Box<dyn GodotStateTraits<Owner = Self::Owner, Resource = Self::Resource>>> {
         // Setup gliding
         if !resource.input_fly {
             // Reduce flying timer 

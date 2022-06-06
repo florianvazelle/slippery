@@ -86,6 +86,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "convert_case"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fb4a24b1aaf0fd0ce8b45161144d6f42cd91677fd5940fd431183eb023b3a2b8"
+
+[[package]]
 name = "gdnative"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -454,28 +460,29 @@ version = "0.1.0"
 dependencies = [
  "gdnative",
  "slippery-core",
- "slippery-debug",
 ]
 
 [[package]]
 name = "slippery-core"
 version = "0.1.0"
 dependencies = [
+ "convert_case",
  "gdnative",
  "lerp",
  "slippery-macro",
-]
-
-[[package]]
-name = "slippery-debug"
-version = "0.1.0"
-dependencies = [
- "gdnative",
+ "sm-gd",
 ]
 
 [[package]]
 name = "slippery-macro"
 version = "0.1.0"
+
+[[package]]
+name = "sm-gd"
+version = "0.1.0"
+dependencies = [
+ "gdnative",
+]
 
 [[package]]
 name = "smallvec"
